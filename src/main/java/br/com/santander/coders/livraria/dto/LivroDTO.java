@@ -1,13 +1,22 @@
 package br.com.santander.coders.livraria.dto;
 
 import br.com.santander.coders.livraria.entity.Livro;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class LivroDTO {
 
     private Long id;
+    @NotNull(message = "Livro deve ter uma editora")
     private EditoraDTO editora;
+    @NotNull(message = "Livro deve ter uma categoria")
     private CategoriaDTO categoria;
+
+    @NotBlank(message="Nome deve conter algum valor")
     private String nome;
+    @Size(max=13,message="Tamanho do isbn acima do permitido")
+    @NotBlank(message="ISBN deve conter algum valor")
     private String isbn;
 
     public LivroDTO() {}

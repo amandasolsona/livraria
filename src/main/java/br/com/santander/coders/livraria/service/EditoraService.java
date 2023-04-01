@@ -50,11 +50,11 @@ public class EditoraService {
 
     public void deletar(Long id) {
 
-        if (editoraRepository.existsById(id)) {
-            editoraRepository.deleteById(id);
+        if (!editoraRepository.existsById(id)) {
+            throw new EntityNotFoundException("Editora não encontrada!");
         }
 
-        throw new EntityNotFoundException("Editora não encontrada!");
+        editoraRepository.deleteById(id);
     }
 
 }

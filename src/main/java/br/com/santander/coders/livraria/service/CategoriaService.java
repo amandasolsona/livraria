@@ -50,11 +50,11 @@ public class CategoriaService {
 
     public void deletar(Long id) {
 
-        if (categoriaRepository.existsById(id)) {
-            categoriaRepository.deleteById(id);
+        if (!categoriaRepository.existsById(id)) {
+            throw new EntityNotFoundException("Categoria não encontrada!");
         }
 
-        throw new EntityNotFoundException("Categoria não encontrada!");
+        categoriaRepository.deleteById(id);
     }
 
 }

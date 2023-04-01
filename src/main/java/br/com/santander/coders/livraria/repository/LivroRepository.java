@@ -15,7 +15,7 @@ public interface LivroRepository extends JpaRepository<Livro, Long> {
     List<Livro> findByEditoraNome(String editora);
 
     @Query( " SELECT l FROM Livro l " +
-            " WHERE UPPER(l.nome) LIKE CONCAT('%', UPPER(:nome), '%') " +
+            " WHERE (UPPER(l.nome) LIKE CONCAT('%', UPPER(:nome), '%')) " +
             "   OR (UPPER(l.isbn) LIKE CONCAT('%', UPPER(:isbn), '%')) ")
     List<Livro> findByNomeOrIsbn(@Param("nome") String nome, @Param("isbn") String isbn);
 

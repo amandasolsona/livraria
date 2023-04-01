@@ -66,11 +66,11 @@ public class LivroService {
 
     public void deletar(Long id) {
 
-        if (livroRepository.existsById(id)) {
-            livroRepository.deleteById(id);
+        if (!livroRepository.existsById(id)) {
+            throw new EntityNotFoundException("Livro não encontrado!");
         }
 
-        throw new EntityNotFoundException("Livro não encontrado!");
+        livroRepository.deleteById(id);
     }
 
 }

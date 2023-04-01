@@ -60,8 +60,8 @@ public class LivroController {
     }
 
     @GetMapping("/filtro")
-    public ResponseEntity<Object> buscarPorNomeIsbn(@RequestParam("nome") String nome,
-                                                    @RequestParam("isbn") String isbn) {
+    public ResponseEntity<Object> buscarPorNomeIsbn(@RequestParam(value = "nome", required = false) String nome,
+                                                    @RequestParam(value = "isbn", required = false) String isbn) {
         try {
             return ResponseEntity.ok(livroService.buscarPorNomeIsbn(nome, isbn));
         } catch (Exception e) {
